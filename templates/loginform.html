@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <style>
+        #bg{
+    background-size: 1400px 700px;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-attachment: fixed;
+}
+.log{
+color:green
+}
+form{
+font-size:20px
+}
+.ho{
+font-size:20px
+
+}
+.messages{
+    background-color:red;
+    font-size:20px;
+}
+    </style>
+</head>
+<body id="bg" style="background-image: url('{% static "wall2.jpg"%}')";>
+       {% if messages %}
+<ul class="messages" >
+    {% for message in messages %}
+    <li >{% if message.tags %}  {% endif %} {{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+<a class="ho" href="{% url 'home' %}" >home</a>
+<h3 align="right">if u dont have account then signup first</h3><br>
+
+<form action="/login/" method="POST" align="center">
+    {% csrf_token %}
+    <h2 class="log">Login Here </h2>
+    enter emailid:<br>
+    <input type="email" placeholder="enter emailid" name="username"><br>
+    enter password:<br>
+    <input type="password" placeholder="enter password" name="password"><br>
+    <input type="submit">
+</form>
+</body>
+</html>

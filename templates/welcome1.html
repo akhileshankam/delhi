@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <style>
+        h2{
+        background-color:green;
+        }
+        form{
+        margin:20px;
+        }
+        .messages{
+        color:red
+        }
+
+
+    </style>
+</head>
+<body>
+
+<h3 align="right"><a href="/logout/">logout</a></h3>
+<h2>welcome {{ request.user.username }}</h2><br><br>
+<form method="POST" action="/calculate/">
+    {% csrf_token %}
+    enter value of x:
+    <input type="text" name="x"><br>
+    enter value of n:
+    <input type="text" name="n"><br>
+    <input type="submit">
+</form>
+
+    {% if messages %}
+<ul class="messages" >
+    {% for message in messages %}
+    <li >{% if message.tags %}  {% endif %} {{ message }}</li>
+    {% endfor %}
+    {% endif %}
+
+
+
+
+
+
+
+</body>
+</html>
