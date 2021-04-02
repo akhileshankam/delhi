@@ -86,6 +86,11 @@ def calculate(request):
         for i in range(n):
              a = 1 / x ** n + a
         return HttpResponse(a)
+def task2(request):
+    l=[2,3,10,15,26,35,50,63]
+    x=l[len(l)-1]+l[len(l)-2]-l[len(l)-3]+4
+    return x
+
 
 def task3(request,x,y,a,b):
     m=(x+1/y)**a
